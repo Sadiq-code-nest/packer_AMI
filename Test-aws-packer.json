@@ -1,0 +1,44 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "us-east-1",
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "my-first-packer-image",
+      "source_ami": "ami-0557a15b87f6559cf",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "sudo apt update",
+        "sudo apt install nginx -y",
+        "sudo systemctl enable nginx",
+        "sudo systemctl start nginx",
+        "sudo ufw allow proto tcp from any to any port 22",
+        "sudo ufw allow proto tcp from any to any port 80",
+        "sudo ufw allow proto tcp from any to any port 443",
+        "echo 'y' | sudo ufw enable"
+      ]
+    }
+  ],
+
+  "post-processors": [
+    {
+      "type": "vagrant"
+    },
+    {
+      "type": "compress"
+    }
+  ]
+}
