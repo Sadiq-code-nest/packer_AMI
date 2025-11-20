@@ -1,28 +1,3 @@
-Here is a clean, professional, beginner-friendly **README.md** for your Packer project.
-You can copy–paste and use it directly in your GitHub repo.
-
----
-
-# 📦 **Packer AMI Build – README**
-
-This project demonstrates how to use **Packer** to build a **custom AWS AMI (Amazon Machine Image)**.
-The AMI includes:
-
-* Ubuntu base image
-* Installed & enabled Nginx
-* Firewall rules (UFW) configured
-* Post-processors (Vagrant / Compress)
-
-This README explains:
-
-* What Packer is
-* How it works
-* Project structure
-* All necessary commands
-* How to build your first AMI
-
----
-
 ## 🚀 **What is Packer?**
 
 Packer is an **open-source image-building automation tool** created by HashiCorp.
